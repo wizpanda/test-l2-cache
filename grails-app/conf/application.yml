@@ -64,10 +64,11 @@ grails:
 
 ---
 hibernate:
+    generate_statistics: true
     cache:
         queries: false
-        use_second_level_cache: false
-        use_query_cache: false
+        use_second_level_cache: true
+        use_query_cache: true
 dataSource:
     pooled: true
     jmxExport: true
@@ -78,7 +79,7 @@ dataSource:
 environments:
     development:
         dataSource:
-            dbCreate: create-drop
+            dbCreate: update
             url: jdbc:h2:mem:devDb;MVCC=TRUE;LOCK_TIMEOUT=10000;DB_CLOSE_ON_EXIT=FALSE
     test:
         dataSource:

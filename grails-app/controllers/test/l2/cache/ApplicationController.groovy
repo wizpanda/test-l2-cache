@@ -1,14 +1,17 @@
 package test.l2.cache
 
-import grails.core.GrailsApplication
-import grails.plugins.*
+import com.wizpanda.test.User
 
-class ApplicationController implements PluginManagerAware {
-
-    GrailsApplication grailsApplication
-    GrailsPluginManager pluginManager
+class ApplicationController {
 
     def index() {
-        [grailsApplication: grailsApplication, pluginManager: pluginManager]
+        User user = User.createCriteria().get {
+            eq("id", 1l)
+            cache(true)
+        }
+
+        println "Found $user"
+
+        render ""
     }
 }

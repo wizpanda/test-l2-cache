@@ -22,6 +22,13 @@ appender('STDOUT', ConsoleAppender) {
     }
 }
 
+logger("org.hibernate.cache", DEBUG)
+logger("org.hibernate.stat", TRACE)
+logger("org.hibernate.engine.internal", INFO)
+logger("org.hibernate.engine.transaction", DEBUG)
+logger("org.hibernate.engine", DEBUG)
+logger("org.hibernate.SQL", TRACE)
+
 def targetDir = BuildSettings.TARGET_DIR
 if (Environment.isDevelopmentMode() && targetDir != null) {
     appender("FULL_STACKTRACE", FileAppender) {
